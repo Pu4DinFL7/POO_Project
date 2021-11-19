@@ -122,12 +122,13 @@ public class GameEngine implements Observer {
 		case "Bulldozer":
 			Bulldozer bulldozer = new Bulldozer(new Point2D(x, y));
 			tileList.add(bulldozer);
+			
 
 			break;
 
 		case "Fire":
 			tileList.add(new Fire(new Point2D(x, y)));
-
+			
 			break;
 		default:
 
@@ -163,6 +164,11 @@ public class GameEngine implements Observer {
 			break;
 		}
 	}
+	
+	
+	
+	
+	
 
 	// Criacao de mais objetos - neste exemplo e' um bombeiro e dois fogos
 	private void createMoreStuff() {

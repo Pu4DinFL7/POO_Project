@@ -7,10 +7,16 @@ import pt.iul.ista.poo.utils.Point2D;
 //Tem atributos e metodos repetidos em relacao ao que está definido noutras classes 
 //Isso sera' de evitar na versao a serio do projeto
 
-public class Pine extends GameElement {
+public class Pine extends GameElement implements Burnable {
 
 	public Pine(Point2D position) {
 		super(position, "pine", 0);
+	}
+
+	@Override
+	public void burn() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

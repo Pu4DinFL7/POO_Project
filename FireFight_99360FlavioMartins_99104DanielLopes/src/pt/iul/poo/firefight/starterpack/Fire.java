@@ -13,6 +13,8 @@ public class Fire extends GameElement {
 		super(position,"fire", 1);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 
 }

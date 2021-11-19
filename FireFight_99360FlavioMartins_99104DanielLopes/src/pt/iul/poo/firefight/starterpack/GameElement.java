@@ -19,7 +19,6 @@ public abstract class GameElement implements ImageTile {
 
 	public void changePosition(Direction dir) {
 		position = position.plus(dir.asVector());
-
 	}
 
 	@Override
