@@ -11,16 +11,16 @@ public class Main {
 
 		// Cria uma instancia de GameEngine e depois inicia o jogo
 		// Podera' vir a ficar diferente caso defina GameEngine como solitao
-		
+
 		GameEngine game = new GameEngine();
-		//gui.registerObserver(game); //temos de fazer sempre isto tudo
-		
+		// gui.registerObserver(game); //temos de fazer sempre isto tudo
+
 		game.readFile("example.txt");
+		//game.cenas();
 
+		//System.out.println(Fire.getFires().size());
+		//System.out.println(GameElement.listGameElements().size());
 		game.start();
-		
-
-
 		
 	}
 }

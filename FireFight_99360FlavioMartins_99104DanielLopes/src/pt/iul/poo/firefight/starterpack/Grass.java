@@ -2,7 +2,7 @@ package pt.iul.poo.firefight.starterpack;
 
 import pt.iul.ista.poo.utils.Point2D;
 
-public class Grass extends GameElement implements Burnable {
+public class Grass extends Terrain implements Burnable {
 
 	public Grass(Point2D position) {
 		super(position,"grass",0);

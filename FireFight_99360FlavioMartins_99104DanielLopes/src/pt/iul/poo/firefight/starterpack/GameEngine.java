@@ -35,8 +35,9 @@ public class GameEngine implements Observer {
 	public static final int GRID_WIDTH = 10;
 
 	private ImageMatrixGUI gui; // Referencia para ImageMatrixGUI (janela de interface com o utilizador)
-	private List<ImageTile> tileList; // Lista de imagens
+	private static List<ImageTile> tileList; // Lista de imagens
 	private Fireman fireman; // Referencia para o bombeiro
+	private List<Fire> fireList;
 
 	// Neste exemplo o setup inicial da janela que faz a interface com o utilizador
 	// e' feito no construtor
@@ -51,15 +52,63 @@ public class GameEngine implements Observer {
 		tileList = new ArrayList<>();
 	}
 
+//	public void cenas() {
+//		// fireList=new ArrayList<>();
+//		for (ImageTile i : tileList) {
+//			if (i.getName().equals("fire")) {
+//				fireList.add((Fire) i);
+//
+//			}
+//		}
+//	}
+
+	// fireList = new ArrayList<>();
+//		for(Fire f:fireList) {
+//			f.propagate();
+//		}
+//	}
+	
+	
+	
+	// retorna uma lista com todos os objetos fogo;
+	public List<Fire> getFires() {
+		List<Fire> list = new ArrayList<>();
+		for (ImageTile i : tileList) {
+			if (i instanceof Fire) {
+				list.add((Fire) i);
+			}
+		}
+		return list;
+	}
+
+	// passa tudo o que esta na tileList para outra lista. Assim pode ser utilizada
+	// noutras classes
+	public static List listImageTile() {
+		List<ImageTile> list = new ArrayList<>();
+		for (ImageTile i : tileList) {
+			list.add(i);
+		}
+		return  list;
+	}
+
+	public static void cenas() {
+		Fire.propagate();
+	}
+
+	
+	public static void addImage(ImageTile obj) {
+		tileList.add(obj);
+	} 
 	// O metodo update() e' invocado sempre que o utilizador carrega numa tecla
 	// no argumento do metodo e' passada um referencia para o objeto observado
 	// (neste caso seria a GUI)
 	@Override
 	public void update(Observed source) {
-
+		System.out.println("=============================================================");
 //		int key = gui.keyPressed(); // obtem o codigo da tecla pressionada
 		// if (key == KeyEvent.VK_ENTER) // se a tecla for ENTER, manda o bombeiro mover
 		fireman.move();
+		cenas();
 
 		gui.update(); // redesenha as imagens na GUI, tendo em conta as novas posicoes
 	}
@@ -122,13 +171,11 @@ public class GameEngine implements Observer {
 		case "Bulldozer":
 			Bulldozer bulldozer = new Bulldozer(new Point2D(x, y));
 			tileList.add(bulldozer);
-			
 
 			break;
 
 		case "Fire":
 			tileList.add(new Fire(new Point2D(x, y)));
-			
 			break;
 		default:
 
@@ -164,11 +211,6 @@ public class GameEngine implements Observer {
 			break;
 		}
 	}
-	
-	
-	
-	
-	
 
 	// Criacao de mais objetos - neste exemplo e' um bombeiro e dois fogos
 	private void createMoreStuff() {
